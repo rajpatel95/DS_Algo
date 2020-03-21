@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    // Best time Complexity O(Log N) with handling some special test cases
+    
     int findMin(vector<int>& nums) {
         
         if( nums.size() == 1 ){
