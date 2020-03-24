@@ -53,8 +53,8 @@ public:
                 
             }
             ans.push_back(l_nodes);
-            level_size = q.size();
-            level++;
+            level_size = q.size(); // Maintains Number of nodes in the next level
+            level++; // Maintain nth level number for odd-even level
         }
         
         return ans;
