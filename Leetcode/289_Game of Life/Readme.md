@@ -1,6 +1,6 @@
 Approach 1: Space: O(M+N)  
 Naive Solution is very simple. Make a copy of the board and Solve for all 8 directions for every cell.
-But space Complexity her would be O(M+N) extra space required.
+But space Complexity would be O(M+N) extra space required.
 
 Approach 2: Space: O(1)
 (Hint Courtesy: Problem's Solution)
