@@ -26,9 +26,7 @@ public:
         return temp;
     }
     
-    string makeString( string s ){
-        string 
-    }
+   
     
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         vector<vector<string>> ans;
@@ -38,7 +36,6 @@ public:
         }
         
         vector<vector<int>> tables; // Containing group by character count, optimized way is to use Hashmap
-        map<string, int> mp; // String is vectored hashtable, while int is the index
         
         tables.push_back(makeTable(strs[0]));
         vector<string>temp2 ;
