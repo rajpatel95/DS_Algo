@@ -11,7 +11,9 @@
 class Solution {
 public:
     
-    // As given in Hint
+    // As given in Hint, if 1 is found, GO LEFT, if 0 is found, GO DOWN
+    // O(M+N) time complexity, maximum calls would be 100 + 100 = 200
+    
     int leftMostColumnWithOne(BinaryMatrix &binaryMatrix) {
         int m = binaryMatrix.dimensions()[0];
         int n = binaryMatrix.dimensions()[1];
