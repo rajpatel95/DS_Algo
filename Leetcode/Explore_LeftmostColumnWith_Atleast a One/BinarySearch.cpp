@@ -11,6 +11,8 @@
 class Solution {
 public:
     
+    // Time complexity would be O(M * Log(N)), maximum number of calls would be 100 * (6,7) = 600 ~ 700
+    
     int binSearchRow(BinaryMatrix &binaryMatrix, int row_number, int col_end){
         int start = 0, end = col_end, mid;
         
