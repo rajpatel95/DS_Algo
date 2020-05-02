@@ -9,7 +9,7 @@ public:
         queue<pair<int, int>> q;
         int days = 0;
         
-        // Count Number of Fresh and Rotten Oranges
+        // Count Number of Fresh Oranges and Push Rotten ones into the Queue
         for( int i = 0 ; i < grid.size() ; i++ ){
             for( int j = 0 ; j < grid[0].size() ; j++){
                 if( grid[i][j] == 1 ){
@@ -21,12 +21,13 @@ public:
             }
         }
     
-        int fresh_rotten = 0;
+        int fresh_rotten = 0; // Count of oranges who were converted from Fresh to Rotten
         if( fresh_oranges == fresh_rotten ){
             return 0;
         }
         
         while( !q.empty() ){
+            // Number of Fresh Oranges who will be Rotten after this day, Queue size indicates number of Fresh Oranges
             int queue_size = q.size();
             
             while(queue_size--){
@@ -48,7 +49,7 @@ public:
             }
             days++;
         }
-        
+        // If all fresh oranges have been converted
         if( fresh_oranges == fresh_rotten ){
             return days - 1;
         }
