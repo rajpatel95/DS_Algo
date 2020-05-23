@@ -12,6 +12,7 @@ public:
         
         Days day[T.size()];
         
+        // Start evaluating from the last day for efficiently using Stack
         for( int i = T.size() - 1 ; i >= 0 ; i-- ){
             day[i].temperature = T[i];
             day[i].warmer_days = 0;
@@ -23,6 +24,7 @@ public:
                 day[i].warmer_days += 1;
             }
             else{
+                // If there are no warmer days than these last days, warmer_days should be 0
                 day[i].warmer_days = 0;
             }
             st.push(day[i]);
