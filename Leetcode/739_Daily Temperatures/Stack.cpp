@@ -7,7 +7,7 @@ public:
     };
     
     vector<int> dailyTemperatures(vector<int>& T) {
-        vector<int> temp;
+        vector<int> ans;
         stack<Days> st;
         
         Days day[T.size()];
@@ -30,10 +30,10 @@ public:
         }
         
         for( int i = 0 ; i < T.size() ; i++ ){
-            temp.push_back(day[i].warmer_days);
+            ans.push_back(day[i].warmer_days);
         }
         
         
-        return temp;
+        return ans;
     }
 };
