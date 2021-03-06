@@ -1,58 +1,87 @@
 class Solution {
 public:
     
+    typedef struct Point{
+        int x;
+        int y;
+    }; 
+        
     int dx[4] = {0, -1, 1, 0};
     int dy[4] = {1, 0, 0, -1};
+        
     
     int orangesRotting(vector<vector<int>>& grid) {
-        int fresh_oranges = 0;
-        queue<pair<int, int>> q;
-        int days = 0;
         
-        // Count Number of Fresh Oranges and Push Rotten ones into the Queue
-        for( int i = 0 ; i < grid.size() ; i++ ){
-            for( int j = 0 ; j < grid[0].size() ; j++){
-                if( grid[i][j] == 1 ){
-                    fresh_oranges++;
+        
+        queue<Point> q;
+        bool flag = true;
+        int m = grid.size();
+        int n = grid[0].size();
+        
+        for( int i = 0 ; i < m; i++ ){
+            for( int j = 0 ; j < n; j++ ){
+                if( grid[i][j] != 0 ){
+                    flag = false;
                 }
-                else if( grid[i][j] == 2){
-                    q.push({i, j});
+                if(grid[i][j] == 2){
+                    Point point;
+                    point.x = i;
+                    point.y = j;
+                    q.push(point);
                 }
             }
         }
-    
-        int fresh_rotten = 0; // Count of oranges who were converted from Fresh to Rotten
-        if( fresh_oranges == fresh_rotten ){
+        if(flag){
             return 0;
         }
         
-        while( !q.empty() ){
-            // Number of Fresh Oranges who will be Rotten after this day, Queue size indicates number of Fresh Oranges
-            int queue_size = q.size();
+        int q_size;
+        int ans = 0;
+        
+        while(!q.empty()){
             
-            while(queue_size--){
-                int a = q.front().first;
-                int b = q.front().second;
-                
+            
+            q_size = q.size();
+            bool increment = false;
+            for( int i = 0 ; i < q_size; i++){
+                Point point = q.front();
                 q.pop();
                 
-                for( int i = 0 ; i < 4 ; i++ ){
-                    int x = a + dx[i];
-                    int y = b + dy[i];
-                    if( x < 0 || y < 0 || x >= grid.size() || y >= grid[0].size() || grid[x][y] != 1){
-                        continue;
+                for( int j = 0 ; j < 4 ; j++ ){
+                    int x1 = point.x + dx[j];
+                    int y1 = point.y + dy[j];
+                    
+                    if( x1 < m && y1 < n && x1 >= 0 && y1 >= 0 && grid[x1][y1] == 1){
+                        Point temp_point;
+                        temp_point.x = x1;
+                        temp_point.y = y1;
+                        q.push(temp_point);
+                        grid[x1][y1] = 2;
+                        increment = true;
+                   
                     }
-                    grid[x][y] = 2; // Fresh is Rotten Now
-                    fresh_rotten++;
-                    q.push( {x, y} );
+                    
+                }
+                
+            }
+            if(increment){
+                ans++;
+            }
+            
+        }
+        
+        for( int i = 0 ; i < m; i++ ){
+            for( int j = 0 ; j < n; j++ ){
+                if(grid[i][j] == 1){
+                    flag = true;
                 }
             }
-            days++;
         }
-        // If all fresh oranges have been converted
-        if( fresh_oranges == fresh_rotten ){
-            return days - 1;
+        if(flag){
+            return -1;
         }
-        return -1;
+        return ans;
+        
+        
     }
 };
