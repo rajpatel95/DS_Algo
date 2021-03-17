@@ -1,1 +1,1 @@
-Naive Solution is very simple, think of a Trie based solution.
+Naive Solution is very simple, think of two heaps based solution.
