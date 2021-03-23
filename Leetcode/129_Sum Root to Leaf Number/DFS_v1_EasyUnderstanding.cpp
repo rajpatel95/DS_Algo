@@ -15,7 +15,8 @@ public:
     int sum;
     
     void dfs(TreeNode* node, int curr_sum){
-        if(node->left == NULL && node->right == NULL ){
+		
+        if(node->left == NULL && node->right == NULL ){ // Leaf Node reached
             sum += curr_sum * 10 + node->val;
             return;
         }
@@ -25,8 +26,7 @@ public:
         if(node->right != NULL){
             dfs(node->right, curr_sum * 10 + node->val);
         }
-        
-        
+    
     }
     
     int sumNumbers(TreeNode* root) {
