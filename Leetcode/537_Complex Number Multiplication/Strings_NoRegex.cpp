@@ -117,19 +117,19 @@ public:
         string ans;
         vector<int> c1 = getNumbers(a);
 		int r1 = c1[0],  i1 = c1[1];
-        cout<<r1<<": "<<i1<<endl;
+        //cout<<r1<<": "<<i1<<endl;
         
 		
 		vector<int> c2 = getNumbers(b);
 		int r2 = c2[0],  i2 = c2[1];
-        cout<<r2<<": "<<i2<<endl;
+        //cout<<r2<<": "<<i2<<endl;
         
 		
 		int r ,i;
 		
 		r = r1*r2 - i1*i2;
 		i = r1*i2 + r2*i1;
-        cout<<r<<":"<<i<<endl;
+        //cout<<r<<":"<<i<<endl;
 		
 		ans = IntToComplexString(r,i);
 		
